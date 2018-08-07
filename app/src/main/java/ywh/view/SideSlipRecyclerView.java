@@ -10,8 +10,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 import android.widget.Scroller;
-import wh.ywh.base.i.OnItemSlideListener;
-import wh.ywh.util.LogUtil;
+
+import ywh.view.i.OnItemSlideListener;
 
 /**
  * 侧滑
@@ -93,9 +93,7 @@ public class SideSlipRecyclerView extends RecyclerView {
         int y = (int) e.getY();//获得当前点击的Y坐标
         switch (e.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                LogUtil.e("itemStatus:" + itemStatus + ",isScrollingH:" + isScrollingH);
                 if (0 == itemStatus) {  //未打开
-                    LogUtil.e("未打开");
                     itemView = findChildViewUnder(x, y);//根据用户点击的坐标，找到RecyclerView下的子View，这里也就是每一个Item
                     viewHolder = (ViewHolder) getChildViewHolder(itemView);//获得每一个Item的ViewHolder
                     itemViewPosition = getChildLayoutPosition(itemView);
@@ -109,7 +107,6 @@ public class SideSlipRecyclerView extends RecyclerView {
                     View view1 = findChildViewUnder(x, y);
                     ViewHolder viewHolder1 = (ViewHolder) getChildViewHolder(view1);
                     isTheOpendItem = viewHolder.equals(viewHolder1);//判断当前用户指向的Item是否为之前打开的那个Item
-                    LogUtil.e("是否是之前打开的item:" + isTheOpendItem);
                     if (isTheOpendItem) {//是之前打开的item
                         break;
                     } else {
@@ -135,8 +132,6 @@ public class SideSlipRecyclerView extends RecyclerView {
 
                 break;
             case MotionEvent.ACTION_MOVE:
-                LogUtil.e("ACTION_MOVE");
-                LogUtil.e("itemStatus:" + itemStatus + ",isScrollingH:" + isScrollingH + ",isTheOpendItem:" + isTheOpendItem);
                 if (isTheOpendItem) {
                     int scrollX = itemView.getScrollX();  //获得用户在滑动后，View相对初始位置移动的距离
                     int dx = lastX - x; //得到用户实时移动的距离（横向）
@@ -157,8 +152,6 @@ public class SideSlipRecyclerView extends RecyclerView {
                 }
                 break;
             case MotionEvent.ACTION_UP:
-                LogUtil.e("ACTION_UP");
-                LogUtil.e("itemStatus:" + itemStatus + ",isScrollingH:" + isScrollingH);
                 if (isScrollingH && isTheOpendItem) {
                     int deltaX = 0;
                     int upScrollX = itemView.getScrollX();//获得Item总共移动的距离
