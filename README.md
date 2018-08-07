@@ -10,7 +10,7 @@
 <br>        }
 <br>    }
 ## 1.2  在app  build.gradle中依赖
-<br> compile 'com.github.yyyangwenhao:SlideSlipRecyclerView:v1.0' 
+<br>     compile 'com.github.yyyangwenhao:ywh-slidesliprecyclerview:v2.0' 
 
 # 2  布局
 <br> <ywh.view.SideSlipRecyclerView 
