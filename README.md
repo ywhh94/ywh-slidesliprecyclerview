@@ -23,7 +23,7 @@
 <br>  sideSlipRecyclerView.setLayoutManager(new GridLayoutManager(this,2){
 <br>      @Override
 <br>      public boolean canScrollVertically() {
-<br>            //仿微信，侧滑时禁止上下滑动，如不需要，则不需要重写canScrollVertically
+<br>            //仿微信，侧滑时禁止上下滑动
 <br>          return !sideSlipRecyclerView.getIsScrollingH();      
 <br>      }
 <br>  });
